@@ -275,7 +275,7 @@ vAPI.Tabs = class {
         // window is opened; for example, a detached dev tool window.
         browser.webNavigation.onCommitted.addListener(async details => {
             const tab = await this.get(details.tabId);
-            if ( tab.id === -1 ) { return; }
+            if ( tab === null || tab.id === -1 ) { return; }
             details.url = this.sanitizeURL(details.url);
             this.onNavigation(details);
         });
